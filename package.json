@@ -5,7 +5,7 @@
     "author": "Analytical Graphics, Inc.",
 	"license": "Apache-2.0",
     "scripts": {
-        "test": "node test.js",
+        "test": "node test",
         "example": "node printStats.js SampleData/Cesium_Air.gltf"
     },
     "keywords": [
