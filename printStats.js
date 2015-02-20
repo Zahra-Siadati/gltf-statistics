@@ -2,7 +2,7 @@
 var fs = require('fs');
 var path = require('path');
 var argv = require('minimist')(process.argv.slice(2));
-var defined = require('./defined');
+var defined = require('./lib/defined');
 var gltfDefaults = require('./index').gltfDefaults;
 var getAllStatistics = require('./index').getAllStatistics;
 

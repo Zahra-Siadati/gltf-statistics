@@ -1,6 +1,6 @@
 "use strict";
 module.exports = {
-	getAllStatistics : require('./gltfStatistics').getAllStatistics,
-	getDrawCallStatistics : require('./gltfStatistics').getDrawCallStatistics,
-	gltfDefaults : require('./gltfDefaults')
+	getAllStatistics : require('./lib/gltfStatistics').getAllStatistics,
+	getDrawCallStatistics : require('./lib/gltfStatistics').getDrawCallStatistics,
+	gltfDefaults : require('./lib/gltfDefaults')
 };

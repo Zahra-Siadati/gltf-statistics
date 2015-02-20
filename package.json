@@ -4,10 +4,12 @@
 	"description": "JavaScript and Node.js library and command-line tool to display statistics for glTF models",
     "author": "Analytical Graphics, Inc.",
 	"license": "Apache-2.0",
-    "main": "gltfStatistics.js",
     "scripts": {
-      "test": "node test.js"
+        "test": "node test.js"
     },
+    "keywords": [
+      "gltf"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/AnalyticalGraphicsInc/gltf-statistics"
