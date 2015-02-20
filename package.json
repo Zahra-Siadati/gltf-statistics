@@ -2,20 +2,32 @@
 	"name": "gltf-statistics",
 	"version": "0.0.1",
 	"description": "JavaScript and Node.js library and command-line tool to display statistics for glTF models",
-    "author": "Analytical Graphics, Inc.",
 	"license": "Apache-2.0",
+    "author": {
+        "name": "Patrick Cozzi",
+        "email": "pcozzi@agi.com",
+        "url": "https://twitter.com/pjcozzi"
+    },
     "scripts": {
         "test": "node test",
-        "example": "node printStats.js SampleData/Cesium_Air.gltf"
+        "example": "printGltfStats.js SampleData/Cesium_Air.gltf"
     },
     "keywords": [
-      "gltf"
+        "gltf"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/AnalyticalGraphicsInc/gltf-statistics"
-    },    
+        "url": "git@github.com:AnalyticalGraphicsInc/gltf-statistics.git"
+    },
+    "directories": {
+        "bin": "./bin",
+        "lib": "./lib"
+    },
     "dependencies": {
         "minimist": "1.1.0"
-    }
+    },
+    "bugs": {
+        "url": "https://github.com/AnalyticalGraphicsInc/gltf-statistics/issues"
+    },
+    "homepage": "https://github.com/AnalyticalGraphicsInc/gltf-statistics"
 }
