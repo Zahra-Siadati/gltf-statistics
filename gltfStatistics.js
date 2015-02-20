@@ -3,7 +3,7 @@ var defined = require('./defined');
 var defaultValue = require('./defaultValue');
 
 exports.getAllStatistics = gltfStatistics;
-exports.geDrawCallStats = getDrawCallStats;
+exports.geDrawCallStats = getDrawCallStatistics;
 
 function getBuffersSize(buffers) {
     var size = 0;
@@ -66,7 +66,7 @@ function getNumberOfProperties(object) {
     return count;
 }
 
-function getDrawCallStats(gltf, nodeId) {
+function getDrawCallStatistics(gltf, nodeId) {
     var numberOfDrawCalls = 0;
     var numberOfRenderedPrimitives = 0;
 
@@ -141,7 +141,7 @@ function getAllDrawCallStats(gltf) {
     var rootNodesLength = rootNodes.length;
 
     for (var i = 0; i < rootNodesLength; ++i) {
-        var stats = getDrawCallStats(gltf, rootNodes[i]);
+        var stats = getDrawCallStatistics(gltf, rootNodes[i]);
         numberOfDrawCalls += stats.numberOfDrawCalls;
         numberOfRenderedPrimitives += stats.numberOfRenderedPrimitives;
     }

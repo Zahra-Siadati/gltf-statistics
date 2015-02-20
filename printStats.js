@@ -3,8 +3,8 @@ var fs = require('fs');
 var path = require('path');
 var argv = require('minimist')(process.argv.slice(2));
 var defined = require('./defined');
-var gltfDefaults = require('./gltfDefaults');
-var getAllStatistics = require('./gltfStatistics').getAllStatistics;
+var gltfDefaults = require('./index').gltfDefaults;
+var getAllStatistics = require('./index').getAllStatistics;
 
 if (!defined(argv._[0]) || defined(argv.h) || defined(argv.help)) {
 	var help =
