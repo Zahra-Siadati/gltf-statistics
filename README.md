@@ -1,2 +1,3 @@
 # gltf-statistics
-JavaScript library and Node.js command-line tool to display statistics for glTF models
+
+JavaScript and Node.js library and command-line tool to display statistics for glTF models
