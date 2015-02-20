@@ -1,9 +1,9 @@
 "use strict";
-var defined = require('./defined.js');
-var defaultValue = require('./defaultValue.js');
+var defined = require('./defined');
+var defaultValue = require('./defaultValue');
 
-module.exports.getAllStatistics = gltfStatistics;
-module.exports.geDrawCallStats = getDrawCallStats;
+exports.getAllStatistics = gltfStatistics;
+exports.geDrawCallStats = getDrawCallStats;
 
 function getBuffersSize(buffers) {
     var size = 0;

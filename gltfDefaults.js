@@ -1,6 +1,6 @@
 "use strict";
-var defined = require('./defined.js');
-var defaultValue = require('./defaultValue.js');
+var defined = require('./defined');
+var defaultValue = require('./defaultValue');
 
 module.exports = gltfDefaults;
 

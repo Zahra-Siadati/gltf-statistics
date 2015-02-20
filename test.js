@@ -1,8 +1,8 @@
 "use strict";
 var assert = require('assert');
 var fs = require('fs');
-var gltfDefaults = require('./gltfDefaults.js');
-var getAllStatistics = require('./gltfStatistics.js').getAllStatistics;
+var gltfDefaults = require('./gltfDefaults');
+var getAllStatistics = require('./gltfStatistics').getAllStatistics;
 
 var gltf = JSON.parse(fs.readFileSync('SampleData/Cesium_Air.gltf'));
 var stats = getAllStatistics(gltfDefaults(gltf));

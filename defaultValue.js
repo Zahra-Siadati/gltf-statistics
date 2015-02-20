@@ -1,5 +1,5 @@
 "use strict";
-var defined = require('./defined.js');
+var defined = require('./defined');
 
 module.exports = defaultValue;
 
