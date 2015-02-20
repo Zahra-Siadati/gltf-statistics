@@ -9,7 +9,7 @@
         "url": "https://twitter.com/pjcozzi"
     },
     "scripts": {
-        "test": "node test",
+        "test": "mocha",
         "example": "printGltfStats.js SampleData/Cesium_Air.gltf"
     },
     "keywords": [
@@ -25,6 +25,9 @@
     },
     "dependencies": {
         "minimist": "1.1.0"
+    },
+    "devDependencies": {
+        "mocha": "2.1.0"
     },
     "bugs": {
         "url": "https://github.com/AnalyticalGraphicsInc/gltf-statistics/issues"
