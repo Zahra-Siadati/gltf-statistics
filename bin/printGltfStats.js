@@ -49,7 +49,7 @@ var output =
     '\n' +
     'Nodes: ' + stats.numberOfNodes.toLocaleString() + '\n' +
     'Meshes: ' + stats.numberOfMeshes.toLocaleString() + '\n' +
-    'Materials: ' + stats.numberOfMaterials.toLocaleString() + '\n';
+    'Materials: ' + stats.numberOfMaterials.toLocaleString() + '\n' +
     'Animations: ' + stats.numberOfAnimations.toLocaleString() + '\n' +
     '\n' +
     'Run with -h for a description of each statistic.';
