@@ -21,4 +21,21 @@ describe('getAllStatistics', function(){
 		assert.equal(stats.numberOfMaterials, 2);
 		assert.equal(stats.numberOfAnimations, 2);
     })
+
+    it('works with skinned model', function(){
+		var gltf = JSON.parse(fs.readFileSync('test/data/Cesium_Man.gltf'));
+		var stats = getAllStatistics(gltfDefaults(gltf));
+
+		assert.equal(stats.buffersSizeInBytes, 235728);
+		assert.equal(stats.numberOfImages, 1);
+		assert.equal(stats.numberOfExternalRequests, 0);
+
+		assert.equal(stats.numberOfDrawCalls, 1);
+		assert.equal(stats.numberOfRenderedPrimitives, 4672);
+
+		assert.equal(stats.numberOfNodes, 27);
+		assert.equal(stats.numberOfMeshes, 1);
+		assert.equal(stats.numberOfMaterials, 1);
+		assert.equal(stats.numberOfAnimations, 105);
+    })
 });
