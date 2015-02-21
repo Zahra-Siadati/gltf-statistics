@@ -6,7 +6,7 @@ var getAllStatistics = require('../').getAllStatistics;
 
 describe('getAllStatistics', function(){
     it('should return stats', function(){
-		var gltf = JSON.parse(fs.readFileSync('SampleData/Cesium_Air.gltf'));
+		var gltf = JSON.parse(fs.readFileSync('test/data/Cesium_Air.gltf'));
 		var stats = getAllStatistics(gltfDefaults(gltf));
 
 		assert.equal(stats.buffersSizeInBytes, 172256);

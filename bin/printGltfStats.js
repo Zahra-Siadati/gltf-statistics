@@ -12,7 +12,7 @@ if (!defined(argv._[0]) || defined(argv.h) || defined(argv.help)) {
 	    'Usage: node ' + path.basename(__filename) + ' [path-to.gltf]\n' +
 	    '\n' +
 	    'Example:\n' +
-	    '  node ' + path.basename(__filename) + ' SampleData/Cesium_Air.gltf\n' +
+	    '  node ' + path.basename(__filename) + ' test/data/Cesium_Air.gltf\n' +
 	    '\n' +
 	    'Description of each statistic:\n' +
 	    '\n' +

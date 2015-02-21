@@ -10,7 +10,7 @@
     },
     "scripts": {
         "test": "mocha",
-        "example": "printGltfStats.js SampleData/Cesium_Air.gltf"
+        "example": "printGltfStats test/data/Cesium_Air.gltf"
     },
     "keywords": [
         "gltf"
