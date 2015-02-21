@@ -4,10 +4,11 @@
 <a href="https://www.khronos.org/gltf"><img src="doc/gltf.png" /></a>
 </p>
 
-JavaScript and Node.js library and command-line tool to display statistics for [glTF](https://www.khronos.org/gltf) models.
+JavaScript and Node.js library and command-line tool to display statistics for [glTF](https://www.khronos.org/gltf) models.  This is useful for performance analysis.
 
 ## Install
 
+Install [Node.js](http://nodejs.org/), then run:
 ```
 npm install gltf-statistics
 ```
@@ -45,7 +46,7 @@ Loosely speaking, for runtime performance, i.e., fps, `Draw calls` is usually th
 
 The number of `Images`, `Nodes`, `Meshes`, and `Materials` impact performance, but these are accounted for in the number of `Draw calls`.  The complexity of the materials and size of the images also impact performance, but these are not reported yet ([#1](https://github.com/AnalyticalGraphicsInc/gltf-statistics/issues/1)).
 
-For downloading size, the `Total size of all buffers` impacts speed (smaller is better) as does the number of `External requests`, which is the number of `uri` references for buffers, images, and shaders, except for data uris which have their contents base64-encoded (however, this requires base64-decode so we can't always assume it is faster).
+For downloading size, the `Total size of all buffers` impacts speed (smaller is better) as does the number of `External requests`, which is the number of `uri` references for buffers, images, and shaders, except for data uris which have their contents base64-encoded (however, this requires base64-decode, which can impact performance).
 
 ## Use with Node.js
 
