@@ -28,7 +28,7 @@ browserify index.js > gltf-statistics.js
 ```
 Then include it with a script tag:
 ```
-<script src="gltf-statistics.js.js"></script>
+<script src="gltf-statistics.js"></script>
 ```
 
 ## Run tests
@@ -40,6 +40,17 @@ npm install -g mocha
 From the `gltf-statistics` root directory, run
 ```
 mocha
+```
+
+## How to build for browser use
+
+Prebuilt `.js` files are in the `build` directory.  These are built with [browserify](http://browserify.org/).  Install it with:
+```
+npm install -g browserify
+```
+From the `gltf-statistics` root directory, run
+```
+npm run build
 ```
 
 ***

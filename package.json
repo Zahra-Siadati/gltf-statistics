@@ -8,16 +8,21 @@
         "email": "pcozzi@agi.com",
         "url": "https://twitter.com/pjcozzi"
     },
-    "scripts": {
-        "test": "mocha",
-        "example": "printGltfStats test/data/Cesium_Air.gltf"
-    },
     "keywords": [
         "gltf"
     ],
+    "homepage": "https://github.com/AnalyticalGraphicsInc/gltf-statistics"
     "repository": {
         "type": "git",
         "url": "git@github.com:AnalyticalGraphicsInc/gltf-statistics.git"
+    },
+    "bugs": {
+        "url": "https://github.com/AnalyticalGraphicsInc/gltf-statistics/issues"
+    },
+    "scripts": {
+        "test": "mocha",
+        "build": "browserify index.js > build/gltf-statistics.js",
+        "example": "printGltfStats test/data/Cesium_Air.gltf"
     },
     "directories": {
         "bin": "./bin",
@@ -27,10 +32,7 @@
         "minimist": "1.1.0"
     },
     "devDependencies": {
-        "mocha": "2.1.0"
+        "mocha": "2.1.0",
+        "browserify" : "9.0.3"
     },
-    "bugs": {
-        "url": "https://github.com/AnalyticalGraphicsInc/gltf-statistics/issues"
-    },
-    "homepage": "https://github.com/AnalyticalGraphicsInc/gltf-statistics"
 }
