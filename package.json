@@ -1,8 +1,8 @@
 {
-	"name": "gltf-statistics",
-	"version": "0.0.1",
-	"description": "JavaScript and Node.js library and command-line tool to display statistics for glTF models",
-	"license": "Apache-2.0",
+    "name": "gltf-statistics",
+    "version": "0.0.1",
+    "description": "JavaScript and Node.js library and command-line tool to display statistics for glTF models",
+    "license": "Apache-2.0",
     "author": {
         "name": "Patrick Cozzi",
         "email": "pcozzi@agi.com",
