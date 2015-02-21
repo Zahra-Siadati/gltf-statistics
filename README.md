@@ -4,7 +4,7 @@
 <a href="https://www.khronos.org/gltf"><img src="doc/gltf.png" /></a>
 </p>
 
-JavaScript and Node.js library and command-line tool to display statistics for glTF models.
+JavaScript and Node.js library and command-line tool to display statistics for [glTF](https://www.khronos.org/gltf) models.
 
 ## Install
 
@@ -14,7 +14,7 @@ npm install gltf-statistics
 
 ## Command-Line Tool
 
-Use `printGltfStats [path-to-gltf]`.  For example:
+Run `printGltfStats [path-to-gltf]`.  For example:
 
 
 ```
@@ -41,9 +41,9 @@ Animations: 2
 Run with -h for a description of each statistic.
 ```
 
-Loosely speaking, for runtime performance, i.e., fps, `Draw calls` is usually the most important metric (lower is better; a few dozen is great, a few hundred is doable; a 1000+ is bad).  Ideally, `Rendered primitives` will also be low: a few thousand is nothing for todays GPUs; 100,000 should be fine; 1 million+ is doable on good hardware.  If they are being played, `Animations` also impact performance: a dozen is no problem; 100 is not unreasonable (Santa and his reindeer have [120](http://cesiumjs.org/2013/12/23/Building-A-WebGL-Santa-with-Cesium-and-glTF/));  several hundred is a bit much.  Generally, if there are a lot of animations, there are also a lot of `Draw calls`, which also brings down performance.
+Loosely speaking, for runtime performance, i.e., fps, `Draw calls` is usually the most important metric.  Lower is better: a few dozen is great, a few hundred is doable; a 1,000+ is bad.  Lower is also better for `Rendered primitives`: a few thousand is nothing for today's GPUs; 100,000 should be fine; a million is doable on good hardware.  If they are being played, `Animations` also impact performance: a dozen is no problem; 100 is not unreasonable (Santa and his reindeer have [120](http://cesiumjs.org/2013/12/23/Building-A-WebGL-Santa-with-Cesium-and-glTF/));  several hundred is a bit much.  Generally, if there are a lot of animations, there will also be a lot of `Draw calls`, which also brings down performance.
 
-The number of `Images`, `Nodes`, `Meshes`, and `Materials` impact performance but these are accounted for in the number of `Draw calls`.  The complexity of the materials and size of the images also impact performance, but these are not reported yet.
+The number of `Images`, `Nodes`, `Meshes`, and `Materials` impact performance, but these are accounted for in the number of `Draw calls`.  The complexity of the materials and size of the images also impact performance, but these are not reported yet ([#1](https://github.com/AnalyticalGraphicsInc/gltf-statistics/issues/1)).
 
 For downloading size, the `Total size of all buffers` impacts speed (smaller is better) as does the number of `External requests`, which is the number of `uri` references for buffers, images, and shaders, except for data uris which have their contents base64-encoded (however, this requires base64-decode so we can't always assume it is faster).
 
@@ -55,7 +55,7 @@ var gltf = // glTFJSON
 var stats = getAllStatistics(gltf); // Returns an object with the statistics
 ```
 
-We can also get the number of draw calls and rendered primitives for the sub-graph where a given node is the root:
+We can also get the number of draw calls and rendered primitives for a sub-graph where a given node is the root:
 ```
 var getDrawCallStatistics = require('gltf-statistics').getDrawCallStatistics;
 var gltf = // glTFJSON
@@ -71,7 +71,7 @@ Include `build/gltf-statistics.js` it with a `script` tag:
 
 ## Running the tests
 
-Install [mocha](http://mochajs.org/)
+Install [mocha](http://mochajs.org/):
 ```
 npm install -g mocha
 ```
@@ -82,7 +82,7 @@ mocha
 
 ## Building for browser use
 
-A pre-built `.js` file is in the `build` directory.  These are built with [browserify](http://browserify.org/).  Install it with:
+A pre-built unminified `.js` file is in the `build` directory.  This is built with [browserify](http://browserify.org/).  Install it with:
 ```
 npm install -g browserify
 ```
