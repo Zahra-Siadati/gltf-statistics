@@ -20,7 +20,16 @@ TODO
 
 ## Use in the browser
 
-TODO
+Use [browserify](http://browserify.org/) to create a single .js file:
+
+```
+npm install -g browserify
+browserify index.js > gltf-statistics.js
+```
+Then include it with a script tag:
+```
+<script src="gltf-statistics.js.js"></script>
+```
 
 Developed by <a href="http://www.agi.com/">AGI</a>, founders of the Cesium WebGL engine.
 <p align="center">
