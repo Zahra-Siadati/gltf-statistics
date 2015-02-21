@@ -31,6 +31,17 @@ Then include it with a script tag:
 <script src="gltf-statistics.js.js"></script>
 ```
 
+## Run tests
+
+Install [mocha](http://mochajs.org/)
+```
+npm install -g mocha
+```
+From the `gltf-statistics` root directory, run
+```
+mocha
+```
+
 ***
 
 Developed by <a href="http://www.agi.com/">AGI</a>, founders of the Cesium WebGL engine.
