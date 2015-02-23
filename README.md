@@ -6,7 +6,7 @@
 
 JavaScript and Node.js library and command-line tool to display statistics for [glTF](https://www.khronos.org/gltf) models.  This is useful for performance analysis.
 
-[![Build Status](https://travis-ci.org/AnalyticalGraphicsInc/gltf-statistics?branch=master)](https://travis-ci.org/AnalyticalGraphicsInc/gltf-statistics)
+[![Build Status](https://travis-ci.org/AnalyticalGraphicsInc/gltf-statistics.svg?branch=master)](https://travis-ci.org/AnalyticalGraphicsInc/gltf-statistics)
 
 ## Install
 
