@@ -1,5 +1,5 @@
 "use strict";
-var assert = require("assert")
+var assert = require("assert");
 var fs = require('fs');
 var gltfDefaults = require('../').gltfDefaults;
 var getAllStatistics = require('../').getAllStatistics;
@@ -20,7 +20,7 @@ describe('getAllStatistics', function(){
 		assert.equal(stats.numberOfMeshes, 2);
 		assert.equal(stats.numberOfMaterials, 2);
 		assert.equal(stats.numberOfAnimations, 2);
-    })
+    });
 
     it('works with skinned model', function(){
 		var gltf = JSON.parse(fs.readFileSync('test/data/Cesium_Man.gltf'));
@@ -37,5 +37,5 @@ describe('getAllStatistics', function(){
 		assert.equal(stats.numberOfMeshes, 1);
 		assert.equal(stats.numberOfMaterials, 1);
 		assert.equal(stats.numberOfAnimations, 105);
-    })
+    });
 });
