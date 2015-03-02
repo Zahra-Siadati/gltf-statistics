@@ -64,7 +64,7 @@ function printStats(gltfPath) {
 }
 
 function generateCsv(gltfPaths) {
-	var csv = 'Path,Total size of all buffers,Total size of all buffers,Images,External requests (not data uris),Draw calls,Rendered primitives (e.g., triangles),Nodes,Meshes,Materials,Animations\n';
+	var csv = 'Path,Total size of all buffers,Images,External requests (not data uris),Draw calls,Rendered primitives (e.g. triangles),Nodes,Meshes,Materials,Animations\n';
 
 	var length = gltfPaths.length;
 	for (var i = 0; i < length; ++i) {
