@@ -17,7 +17,7 @@ npm install gltf-statistics
 
 ## Command-Line Tool
 
-Run `printGltfStats [path-to-gltf]`.  For example:
+Run `printGltfStats [path-to.gltf or directory-with-gltf-files]`.  For example:
 
 
 ```

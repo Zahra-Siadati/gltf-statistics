@@ -2,6 +2,7 @@
 "use strict";
 var fs = require('fs');
 var path = require('path');
+var glob = require('glob');
 var argv = require('minimist')(process.argv.slice(2));
 var defined = require('../lib/defined');
 var gltfDefaults = require('../').gltfDefaults;
@@ -9,10 +10,11 @@ var getAllStatistics = require('../').getAllStatistics;
 
 if (!defined(argv._[0]) || defined(argv.h) || defined(argv.help)) {
 	var help =
-	    'Usage: node ' + path.basename(__filename) + ' [path-to.gltf]\n' +
+	    'Usage: node ' + path.basename(__filename) + ' [path-to.gltf or directory-with-gltf-files]\n' +
 	    '\n' +
-	    'Example:\n' +
+	    'Examples:\n' +
 	    '  node ' + path.basename(__filename) + ' test/data/Cesium_Air.gltf\n' +
+	    '  node ' + path.basename(__filename) + ' test/data/\n' +
 	    '\n' +
 	    'Description of each statistic:\n' +
 	    '\n' +
@@ -34,24 +36,42 @@ if (!defined(argv._[0]) || defined(argv.h) || defined(argv.help)) {
     return;
 }
 
-var gltf = JSON.parse(fs.readFileSync(argv._[0]));
-var stats = getAllStatistics(gltfDefaults(gltf));
-var output =
-    '\n' +
-	'Key statistics\n' +
-    '--------------\n' +
-    'Total size of all buffers: ' + stats.buffersSizeInBytes.toLocaleString() + ' bytes\n' +
-    'Images: ' + stats.numberOfImages.toLocaleString() + '\n' +
-    'External requests (not data uris): ' + stats.numberOfExternalRequests.toLocaleString() + '\n' +
-    '\n' +
-    'Draw calls: ' + stats.numberOfDrawCalls.toLocaleString() + '\n' +
-    'Rendered primitives (e.g., triangles): ' + stats.numberOfRenderedPrimitives.toLocaleString() + '\n' +
-    '\n' +
-    'Nodes: ' + stats.numberOfNodes.toLocaleString() + '\n' +
-    'Meshes: ' + stats.numberOfMeshes.toLocaleString() + '\n' +
-    'Materials: ' + stats.numberOfMaterials.toLocaleString() + '\n' +
-    'Animations: ' + stats.numberOfAnimations.toLocaleString() + '\n' +
-    '\n' +
-    'Run with -h for a description of each statistic.';
+function printStats(gltfPath) {
+	var gltf = JSON.parse(fs.readFileSync(gltfPath));
+	var stats = getAllStatistics(gltfDefaults(gltf));
+	var output =
+	    '\n' +
+		'Key statistics for ' + gltfPath + '\n' +
+	    '--------------\n' +
+	    'Total size of all buffers: ' + stats.buffersSizeInBytes.toLocaleString() + ' bytes\n' +
+	    'Images: ' + stats.numberOfImages.toLocaleString() + '\n' +
+	    'External requests (not data uris): ' + stats.numberOfExternalRequests.toLocaleString() + '\n' +
+	    '\n' +
+	    'Draw calls: ' + stats.numberOfDrawCalls.toLocaleString() + '\n' +
+	    'Rendered primitives (e.g., triangles): ' + stats.numberOfRenderedPrimitives.toLocaleString() + '\n' +
+	    '\n' +
+	    'Nodes: ' + stats.numberOfNodes.toLocaleString() + '\n' +
+	    'Meshes: ' + stats.numberOfMeshes.toLocaleString() + '\n' +
+	    'Materials: ' + stats.numberOfMaterials.toLocaleString() + '\n' +
+	    'Animations: ' + stats.numberOfAnimations.toLocaleString() + '\n';
 
-process.stdout.write(output);
+	process.stdout.write(output);
+}
+
+var inputPath = argv._[0];
+
+if (!fs.lstatSync(inputPath).isDirectory()) {
+	printStats(inputPath);
+} else {
+    var matches = glob.sync(path.join(inputPath, '**/*.gltf'));
+    var matchesLength = matches.length;
+    if (matchesLength === 0) {
+        process.stdout.write('Did not recursively find any .gltf files in ' + inputPath);
+    }
+
+    for (var i = 0; i < matchesLength; ++i) {
+        printStats(matches[i]);
+    }
+}
+
+process.stdout.write('\nRun with -h for a description of each statistic.');

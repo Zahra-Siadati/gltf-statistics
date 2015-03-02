@@ -30,7 +30,8 @@
         "lib": "./lib"
     },
     "dependencies": {
-        "minimist": "1.1.0"
+        "minimist": "1.1.0",
+        "glob": "4.3.5"
     },
     "devDependencies": {
         "mocha": "2.1.0",
