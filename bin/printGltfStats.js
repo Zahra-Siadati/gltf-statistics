@@ -5,16 +5,19 @@ var path = require('path');
 var glob = require('glob');
 var argv = require('minimist')(process.argv.slice(2));
 var defined = require('../lib/defined');
+var defaultValue = require('../lib/defaultValue');
 var gltfDefaults = require('../').gltfDefaults;
 var getAllStatistics = require('../').getAllStatistics;
 
 if (!defined(argv._[0]) || defined(argv.h) || defined(argv.help)) {
 	var help =
-	    'Usage: node ' + path.basename(__filename) + ' [path-to.gltf or directory-with-gltf-files]\n' +
+	    'Usage: node ' + path.basename(__filename) + ' [path-to.gltf or directory-with-gltf-files] [OPTIONS]\n' +
+	    '  -c, -csv=PATH  Write statistics to the specified .csv file.\n' +
 	    '\n' +
 	    'Examples:\n' +
 	    '  node ' + path.basename(__filename) + ' test/data/Cesium_Air.gltf\n' +
 	    '  node ' + path.basename(__filename) + ' test/data/\n' +
+	    '  node ' + path.basename(__filename) + ' test/data/ -c stats.csv\n' +
 	    '\n' +
 	    'Description of each statistic:\n' +
 	    '\n' +
@@ -35,6 +38,8 @@ if (!defined(argv._[0]) || defined(argv.h) || defined(argv.help)) {
 
     return;
 }
+
+var csvPath = defaultValue(argv.c, argv.csv);
 
 function printStats(gltfPath) {
 	var gltf = JSON.parse(fs.readFileSync(gltfPath));
@@ -58,6 +63,30 @@ function printStats(gltfPath) {
 	process.stdout.write(output);
 }
 
+function generateCsv(gltfPaths) {
+	var csv = 'Path,Total size of all buffers,Total size of all buffers,Images,External requests (not data uris),Draw calls,Rendered primitives (e.g., triangles),Nodes,Meshes,Materials,Animations\n';
+
+	var length = gltfPaths.length;
+	for (var i = 0; i < length; ++i) {
+		var gltf = JSON.parse(fs.readFileSync(gltfPaths[i]));
+		var stats = getAllStatistics(gltfDefaults(gltf));
+
+		csv +=
+		    gltfPaths[i] + ',' +
+            stats.buffersSizeInBytes.toString() + ',' +
+            stats.numberOfImages.toString() + ',' +
+            stats.numberOfExternalRequests.toString() + ',' +
+            stats.numberOfDrawCalls.toString() + ',' +
+            stats.numberOfRenderedPrimitives.toString() + ',' +
+            stats.numberOfNodes.toString() + ',' +
+            stats.numberOfMeshes.toString() + ',' +
+            stats.numberOfMaterials.toString() + ',' +
+            stats.numberOfAnimations.toString() + ',\n';
+	}
+
+	return csv;
+}
+
 var inputPath = argv._[0];
 
 if (!fs.lstatSync(inputPath).isDirectory()) {
@@ -69,8 +98,13 @@ if (!fs.lstatSync(inputPath).isDirectory()) {
         process.stdout.write('Did not recursively find any .gltf files in ' + inputPath);
     }
 
-    for (var i = 0; i < matchesLength; ++i) {
-        printStats(matches[i]);
+    if (defined(csvPath)) {
+    	fs.writeFileSync(csvPath, generateCsv(matches));
+    	process.stdout.write('Wrote statistics for ' + matchesLength.toLocaleString() + ' models to ' + csvPath + '\n');
+    } else {
+	    for (var i = 0; i < matchesLength; ++i) {
+	        printStats(matches[i]);
+	    }
     }
 }
 

@@ -43,6 +43,11 @@ Animations: 2
 
 Run with -h for a description of each statistic.
 ```
+It can also recursively search a directory for glTF files and write the stats for each one to a csv file.  For example, run:
+
+```
+printGltfStats test/data/ -c stats.csv
+```
 
 Loosely speaking, for runtime performance, i.e., fps, `Draw calls` is usually the most important metric.  Lower is better: a few dozen is great, a few hundred is doable; a 1,000+ is bad.  Lower is also better for `Rendered primitives`: a few thousand is nothing for today's GPUs; 100,000 should be fine; a million is doable on good hardware.  If they are being played, `Animations` also impact performance: a dozen is no problem; 100 is not unreasonable (Santa and his reindeer have [120](http://cesiumjs.org/2013/12/23/Building-A-WebGL-Santa-with-Cesium-and-glTF/));  several hundred is a bit much.  Generally, if there are a lot of animations, there will also be a lot of `Draw calls`, which also brings down performance.
 
