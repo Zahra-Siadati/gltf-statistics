@@ -79,13 +79,13 @@ Include `build/gltf-statistics.js` it with a `script` tag:
 
 ## Running the tests
 
-Install [mocha](http://mochajs.org/):
+The tests use [mocha](http://mochajs.org/).  From the `gltf-statistics` root directory, run
 ```
-npm install -g mocha
+npm test
 ```
-From the `gltf-statistics` root directory, run
+We can also run JSHint separately
 ```
-mocha
+npm run jshint
 ```
 
 ## Building for browser use

@@ -20,9 +20,9 @@
         "url": "https://github.com/AnalyticalGraphicsInc/gltf-statistics/issues"
     },
     "scripts": {
-        "test": "./node_modules/jshint/bin/jshint index.js lib bin test && mocha",
+        "test": "npm run jshint && ./node_modules/mocha/bin/mocha test/**/*.js",
+        "jshint": "./node_modules/jshint/bin/jshint *.js **/*.js --exclude build/**/*.js",
         "build": "browserify index.js > build/gltf-statistics.js",
-        "jshint": "./node_modules/jshint/bin/jshint index.js lib bin test",
         "example": "printGltfStats test/data/Cesium_Air.gltf"
     },
     "directories": {
