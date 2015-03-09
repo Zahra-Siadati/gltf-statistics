@@ -15,9 +15,9 @@ if (!defined(argv._[0]) || defined(argv.h) || defined(argv.help)) {
 	    '  -c, -csv=PATH  Write statistics to the specified .csv file.\n' +
 	    '\n' +
 	    'Examples:\n' +
-	    '  node ' + path.basename(__filename) + ' test/data/Cesium_Air.gltf\n' +
-	    '  node ' + path.basename(__filename) + ' test/data/\n' +
-	    '  node ' + path.basename(__filename) + ' test/data/ -c stats.csv\n' +
+	    '  node ./bin/' + path.basename(__filename) + ' test/data/Cesium_Air.gltf\n' +
+	    '  node ./bin/' + path.basename(__filename) + ' test/data/\n' +
+	    '  node ./bin/' + path.basename(__filename) + ' test/data/ -c stats.csv\n' +
 	    '\n' +
 	    'Description of each statistic:\n' +
 	    '\n' +
@@ -88,23 +88,23 @@ function generateCsv(gltfPaths) {
 }
 
 var inputPath = argv._[0];
+var matches;
 
 if (!fs.lstatSync(inputPath).isDirectory()) {
-	printStats(inputPath);
+    matches = [inputPath];
 } else {
     var matches = glob.sync(path.join(inputPath, '**/*.gltf'));
-    var matchesLength = matches.length;
-    if (matchesLength === 0) {
+    if (matches.length === 0) {
         process.stdout.write('Did not recursively find any .gltf files in ' + inputPath);
     }
+}
 
-    if (defined(csvPath)) {
-    	fs.writeFileSync(csvPath, generateCsv(matches));
-    	process.stdout.write('Wrote statistics for ' + matchesLength.toLocaleString() + ' models to ' + csvPath + '\n');
-    } else {
-	    for (var i = 0; i < matchesLength; ++i) {
-	        printStats(matches[i]);
-	    }
+if (defined(csvPath)) {
+    fs.writeFileSync(csvPath, generateCsv(matches));
+    process.stdout.write('Wrote statistics for ' + matches.length.toLocaleString() + ' model' + (matches.length > 1 ? 's' : '') + ' to ' + csvPath + '\n');
+} else {
+    for (var i = 0; i < matches.length; ++i) {
+        printStats(matches[i]);
     }
 }
 
