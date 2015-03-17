@@ -1,6 +1,6 @@
 {
     "name": "gltf-statistics",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "JavaScript and Node.js library and command-line tool to display statistics for glTF models",
     "license": "Apache-2.0",
     "author": {
@@ -22,7 +22,7 @@
     "scripts": {
         "test": "npm run jshint && ./node_modules/mocha/bin/mocha test/**/*.js",
         "jshint": "./node_modules/jshint/bin/jshint *.js **/*.js --exclude build/**/*.js",
-        "build": "browserify index.js > build/gltf-statistics.js",
+        "build": "browserify index.js --standalone gltfStatistics -o build/gltf-statistics.js",
         "example": "printGltfStats test/data/Cesium_Air.gltf"
     },
     "directories": {

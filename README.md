@@ -74,7 +74,10 @@ var stats = getDrawCallStatistics(gltf, 'node-id');
 
 Include `build/gltf-statistics.js` it with a `script` tag:
 ```
-<script src="gltf-statistics.js"></script>
+<script src="build/gltf-statistics.js"></script>
+<script>
+    var stats = gltfStatistics.getAllStatistics(/* ... */);
+</script>
 ```
 
 ## Running the tests
